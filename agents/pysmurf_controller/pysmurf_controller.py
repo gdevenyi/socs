@@ -251,6 +251,21 @@ class PysmurfController(DatagramProtocol):
 
         return ok, msg
 
+    def take_iv_curve(self, session, params=None):
+        """
+        Task to run iv curve
+        """
+        if params is None:
+            params = {}
+
+        ok, msg = self._run_script(
+            '/config/scripts/pysmurf/take_iv_curve.py',
+            params.get('args', []),
+            params.get('log', True)
+        )
+
+        return ok, msg
+
 
 def make_parser(parser=None):
     if parser is None:
